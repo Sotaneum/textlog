@@ -2,7 +2,7 @@ import os
 import sys
 from datetime import datetime
 
-def log(file_name, context, path=None, isPrint=False):
+def log(file_name, context, path=None, is_print=False, is_no_file=False):
     if path is None:
         path = os.path.dirname(os.path.abspath("./")).replace("\\","/") + "/"
     else:
@@ -13,11 +13,12 @@ def log(file_name, context, path=None, isPrint=False):
     now = datetime.now()
     str_ = now.strftime('%Y-%m-%d %H:%M:%S') + " > " + context + "\n"
     try:
-        with open(file_, "a") as myfile:
-            myfile.write(str_)
+        if is_no_file is False:
+            with open(file_, "a") as myfile:
+                myfile.write(str_)
     except:
         pass
-    if isPrint is True:
+    if is_print is True:
         print(str_)
 
 def help():
@@ -41,10 +42,10 @@ if __name__ == "__main__":
     if len(argv) > 1:
         if "add" in argv:
             del argv[argv.index("add")]
-            isPrint = False
+            is_print = False
             path = None
             if "-p" in argv:
-                isPrint = True
+                is_print = True
                 del argv[argv.index("-p")]
             if "-P" in argv:
                 idx = argv.index("-P")
@@ -52,7 +53,7 @@ if __name__ == "__main__":
                 del argv[idx]
                 del argv[idx]
             if len(argv) == 3:
-                log(argv[1], argv[2], path, isPrint)
+                log(argv[1], argv[2], path, is_print)
             else:
                 help()
         elif "help" in argv:

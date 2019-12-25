@@ -77,6 +77,9 @@ pip install textlog
 
 ## Log
 
+- 0.0.1.1
+  - add is_no_file option
+
 - 0.0.1
   - create project
   - add command
