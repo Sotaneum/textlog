@@ -1,6 +1,8 @@
 
 # Get Started with `textlog`
 
+Simple Python Text Log
+
 ## Getting Started
 
 - Use our step-by-step guide to get started with `textlog` in minutes.
